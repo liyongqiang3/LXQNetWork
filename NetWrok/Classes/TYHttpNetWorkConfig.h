@@ -11,7 +11,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface TYHttpNetWorkConfig : NSObject
 
-@property (nonatomic, copy) NSString *baseUrl; // 请求的base 的URL
+@property (nonatomic, copy) NSString *baseUrl; // 请求 的URL
+
 @property (nonatomic, copy) NSDictionary *baseParams; // 请求的基础参数
 
 

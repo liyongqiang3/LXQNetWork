@@ -45,7 +45,7 @@ typedef NS_ENUM (NSInteger, TYNetWorkErrorType) {
     if (!_localParams) {
         NSMutableDictionary *params = [[NSMutableDictionary alloc] init];
         NSDictionary *baseParams = [TYHttpNetWorkConfig shareInstance].baseParams;
-        NSString *deviceId = baseParams[@"deviceId"];
+        NSString *deviceId = baseParams[@"deviceUuid"];
         if (deviceId.length > 0) {
             params[@"deviceUuid"] = deviceId;
         }
@@ -148,9 +148,6 @@ typedef NS_ENUM (NSInteger, TYNetWorkErrorType) {
 - (AFHTTPSessionManager *)postSessionManager
 {
     AFHTTPSessionManager *manager = [TYHttpSessionManager postManager];
-//    manager.requestSerializer = [AFHTTPRequestSerializer serializer];
-//    [manager.requestSerializer setValue:@"application/x-www-form-urlencoded"forHTTPHeaderField:@"Content-Type"];
-//    [manager.requestSerializer setStringEncoding:NSUTF8StringEncoding];
     NSDictionary *baseParams = [TYHttpNetWorkConfig shareInstance].baseParams;
 
     NSString *token = baseParams[@"userToken"];
@@ -280,16 +277,8 @@ typedef NS_ENUM (NSInteger, TYNetWorkErrorType) {
         return path;
     }
     NSString *URLString = nil;
-#if DEBUG  // 测试地址和线上地址可以在这里替换
     URLString = [NSString stringWithFormat:@"%@%@",[TYHttpNetWorkConfig shareInstance].baseUrl,path];
-
-#else
-    URLString = [NSString stringWithFormat:@"%@%@",BASEURLTANGYI,path];
-
-#endif
-
     return URLString;
-
 }
 
 - (NSString *)_appendBaseControlPath:(NSString *)path withParameters:(NSDictionary *)params

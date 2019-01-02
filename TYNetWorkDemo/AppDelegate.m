@@ -26,7 +26,9 @@
     [self.window makeKeyAndVisible];
     NSDictionary *baseParams = @{@"deviceUuid":@"B0C19589-960F-41B8-8B50-5B8F43FB372",@"version":@"1.0",@"deviceType":@"1"};
     [TYHttpNetWorkConfig shareInstance].baseParams = baseParams;
-    [TYHttpNetWorkConfig shareInstance].baseUrl = @"http://testqj.tangyishipin.com";
+    [TYHttpNetWorkConfig shareInstance].debugBaseUrl = @"http://testqj.tangyishipin.com";
+    [TYHttpNetWorkConfig shareInstance].releaseBaseUrl = @"http://testqj.tangyishipin.com";
+
     return YES;
 }
 
